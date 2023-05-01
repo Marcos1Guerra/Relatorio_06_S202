@@ -1,0 +1,27 @@
+Questão 01:
+1. MATCH(n) RETURN n;
+2. MATCH(n:Game) WHERE n.ano >= 2012 RETURN n;
+3. MATCH(n:Game) WHERE n.genero = 'Terror' RETURN n;
+4. MATCH(n:Jurado)-[x:JOGOU] -> (g:Game) WHERE x.nota >= 7 RETURN g;
+
+
+Questão 02:
+1.
+CREATE(g:Game{titulo:'League of Legends',genero:'MOBA',ano:2009});
+CREATE(g:Game{titulo:'Counter-Strike',genero:'FPS',ano:1999});
+CREATE(g:Game{titulo:'The Mageseeker',genero:'RPG',ano:2023});
+
+2.
+CREATE(j:Jurado{nome:'Pedro'});
+CREATE(j:Jurado{nome:'Marcos'});
+CREATE(j:Jurado{nome:'Totoro'});
+
+3.
+MATCH(j:Jurado{nome:'Pedro'}),(g:Game{titulo:'The Mageseeker'})
+CREATE(j)-[:JOGOU{nota:8, horas:200}]->(g);
+
+MATCH(j:Jurado{nome:'Marcos'}),(g:Game{titulo:'League of Legends'})
+CREATE(j)-[:JOGOU{nota:9, horas: 500}]->(g);
+
+MATCH(j:Jurado{nome:'Totoro'}),(g:Game{titulo:'Counter-Strike'})
+CREATE(j)-[:JOGOU{nota:7, horas: 300}]->(g);
